@@ -12,6 +12,7 @@ import SkillsScreen from '../screens/App/SkillsScreen';
 import SkillFormScreen from '../screens/App/SkillFormScreen';
 import AboutScreen from '../screens/App/AboutScreen';
 import GoalsScreen from '../screens/App/GoalsScreen';
+import GoalFormScreen from '../screens/App/GoalFormScreen';
 import AiCoachScreen from '../screens/App/AiCoachScreen';
 
 const Stack = createNativeStackNavigator();
@@ -48,6 +49,12 @@ function AppRoutes() {
         name="Goals" 
         component={GoalsScreen} 
         options={{ title: 'Metas de Carreira' }} 
+      />
+
+      <Stack.Screen 
+        name="GoalForm" 
+        component={GoalFormScreen} 
+        options={{ title: 'Gerenciar Meta' }} 
       />
 
       <Stack.Screen 
