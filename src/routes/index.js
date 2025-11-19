@@ -8,6 +8,8 @@ import { AuthContext } from '../contexts/AuthContext';
 import LoginScreen from '../screens/Auth/LoginScreen';
 import RegisterScreen from '../screens/Auth/RegisterScreen';
 import HomeScreen from '../screens/App/HomeScreen';
+import SkillsScreen from '../screens/App/SkillsScreen';
+import SkillFormScreen from '../screens/App/SkillFormScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,7 +28,17 @@ function AppRoutes() {
       <Stack.Screen 
         name="Home" 
         component={HomeScreen} 
-        options={{ title: 'SkillMap', headerTitleAlign: 'center' }}
+        options={{ title: 'Dashboard', headerTitleAlign: 'center' }}
+      />
+      <Stack.Screen 
+        name="Skills" 
+        component={SkillsScreen} 
+        options={{ title: 'Minhas Habilidades' }}
+      />
+      <Stack.Screen 
+        name="SkillForm" 
+        component={SkillFormScreen} 
+        options={{ title: 'Gerenciar Habilidade' }}
       />
     </Stack.Navigator>
   );
