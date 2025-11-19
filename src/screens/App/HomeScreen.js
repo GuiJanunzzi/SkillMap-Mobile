@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { AuthContext } from '../../contexts/AuthContext';
+import { SafeAreaFrameContext } from 'react-native-safe-area-context';
 
 export default function HomeScreen({ navigation }) {
   const { signOut } = useContext(AuthContext);
@@ -19,7 +20,13 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.cardDesc}>Gerenciar lista de skills</Text>
         </TouchableOpacity>
 
-        {/* Espaço para outras funcionalidades futuras */}
+        <TouchableOpacity 
+          style={styles.card} 
+          onPress={() => navigation.navigate('About')}
+        >
+          <Text style={styles.cardTitle}>Sobre o App</Text>
+          <Text style={styles.cardDesc}>Versão e Desenvolvedores</Text>
+        </TouchableOpacity>
       </View>
 
       <TouchableOpacity style={styles.logoutButton} onPress={signOut}>

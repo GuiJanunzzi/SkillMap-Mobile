@@ -10,6 +10,7 @@ import RegisterScreen from '../screens/Auth/RegisterScreen';
 import HomeScreen from '../screens/App/HomeScreen';
 import SkillsScreen from '../screens/App/SkillsScreen';
 import SkillFormScreen from '../screens/App/SkillFormScreen';
+import AboutScreen from '../screens/App/AboutScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,12 @@ function AppRoutes() {
         name="SkillForm" 
         component={SkillFormScreen} 
         options={{ title: 'Gerenciar Habilidade' }}
+      />
+
+      <Stack.Screen 
+        name="About" 
+        component={AboutScreen} 
+        options={{ title: 'Sobre' }} 
       />
     </Stack.Navigator>
   );
