@@ -78,6 +78,12 @@ export default function SkillsScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
+      {/* CABECALHO */}
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Minhas Competências</Text>
+        <Text style={styles.headerSubtitle}>Habilidades técnicas que você já domina.</Text>
+      </View>
+      {/* CARREGAR HABILIDADES */}
       {loading ? (
         <ActivityIndicator size="large" color="#2E7D32" style={{ marginTop: 20 }} />
       ) : (
@@ -87,8 +93,10 @@ export default function SkillsScreen({ navigation }) {
           renderItem={renderItem}
           contentContainerStyle={{ paddingBottom: 80 }}
           ListEmptyComponent={
-            <View style={{ alignItems: 'center', marginTop: 50 }}>
-                <Text style={styles.emptyText}>Você ainda não adicionou habilidades.</Text>
+            <View style={styles.emptyContainer}>
+                <Feather name="clipboard" size={40} color="#CCC" />
+                <Text style={styles.emptyText}>Nenhuma habilidade registrada.</Text>
+                <Text style={styles.emptySubText}>Adicione o que você já sabe fazer.</Text>
             </View>
           }
         />
@@ -105,13 +113,20 @@ export default function SkillsScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F5F5F5', padding: 10 },
-  card: { backgroundColor: '#FFF', padding: 15, borderRadius: 8, marginBottom: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', elevation: 2 },
+  container: { flex: 1, backgroundColor: '#F5F5F5', padding: 15 },
+  header: { marginBottom: 20, marginTop: 10 },
+  headerTitle: { fontSize: 22, fontWeight: 'bold', color: '#333' },
+  headerSubtitle: { fontSize: 14, color: '#666', marginTop: 5 },
+  card: { backgroundColor: '#FFF', padding: 15, borderRadius: 10, marginBottom: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', elevation: 1 },
+  contentContainer: { flexDirection: 'row', alignItems: 'center', flex: 1 },
+  iconContainer: { width: 40, height: 40, borderRadius: 20, backgroundColor: '#2E7D32', alignItems: 'center', justifyContent: 'center', marginRight: 15 },
   cardContent: { flex: 1 },
-  skillName: { fontSize: 18, fontWeight: 'bold', color: '#333' },
-  skillDesc: { fontSize: 14, color: '#666', marginVertical: 2 },
+  skillName: { fontSize: 16, fontWeight: 'bold', color: '#333' },
+  skillDesc: { fontSize: 12, color: '#888', marginBottom: 2 },
   skillCategory: { fontSize: 12, color: '#2E7D32', fontWeight: 'bold' },
-  actions: { flexDirection: 'row' },
+  actions: { flexDirection: 'row', alignItems: 'center' },
   fab: { position: 'absolute', width: 56, height: 56, alignItems: 'center', justifyContent: 'center', right: 20, bottom: 20, backgroundColor: '#2E7D32', borderRadius: 28, elevation: 8 },
-  emptyText: { textAlign: 'center', color: '#999', fontSize: 16 }
+  emptyContainer: { alignItems: 'center', marginTop: 50 },
+  emptyText: { marginTop: 10, color: '#666', fontWeight: 'bold', fontSize: 16 },
+  emptySubText: { fontSize: 12, color: '#999', marginTop: 2 }
 });
