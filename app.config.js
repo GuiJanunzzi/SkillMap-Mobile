@@ -18,10 +18,10 @@ module.exports = {
     slug: "skillmap-mobile",
     version: appVersion,
     orientation: "portrait",
-    icon: "./assets/icon.png",
+    icon: "./assets/skillmap-logo.png",
     userInterfaceStyle: "light",
     splash: {
-      image: "./assets/splash.png",
+      image: "./assets/skillmap-logo.png",
       resizeMode: "contain",
       backgroundColor: "#ffffff"
     },
@@ -30,13 +30,13 @@ module.exports = {
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: "./assets/adaptive-icon.png",
+        foregroundImage: "./assets/skillmap-logo.png",
         backgroundColor: "#ffffff"
       },
       package: "com.fiap.skillmap" // Nome do pacote Android
     },
     web: {
-      favicon: "./assets/favicon.png"
+      favicon: "./assets/skillmap-logo.png"
     },
     
     extra: {

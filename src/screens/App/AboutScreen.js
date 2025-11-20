@@ -27,13 +27,10 @@ export default function AboutScreen() {
       <ScrollView contentContainerStyle={styles.container}>
         {/* Logo e Título */}
         <View style={styles.header}>
-          <Feather
-            name="map"
-            size={60}
-            color="#2E7D32"
-            style={styles.logoIcon}
+          <Image
+          source={require("../../../assets/skillmap-logo.png")}
+          style={styles.logo}
           />
-          <Text style={styles.title}>SkillMap</Text>
           <Text style={styles.subtitle}>O Futuro do Trabalho</Text>
         </View>
 
@@ -176,5 +173,11 @@ const styles = StyleSheet.create({
     color: "#2E7D32", 
     fontWeight: "bold",
     marginTop: 2,
+  },
+  logo: {
+    width: 120,
+    height: 120,
+    marginTop: 20,
+    marginBottom: 20,
   },
 });
