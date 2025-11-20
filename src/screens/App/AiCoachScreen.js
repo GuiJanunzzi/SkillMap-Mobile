@@ -5,21 +5,37 @@ import api from '../../services/api';
 import { AuthContext } from '../../contexts/AuthContext';
 
 export default function AiCoachScreen() {
-  const [advice, setAdvice] = useState('');
+  const [advice, setAdvice] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const { userInfo } = useContext(AuthContext);
 
   const handleGetAdvice = async () => {
+    if (!userInfo?.id) return;
+
     setLoading(true);
-    setAdvice(''); 
+    setAdvice(null); // Limpa o conselho anterior visualmente
+
     try {
       const response = await api.get(`/usuarios/${userInfo.id}/conselho-carreira`);
-      const adviceText = response.data.conselho || response.data.advice;
+      
+      console.log("Resposta da IA:", response.data);
+
+      // Tenta pegar pelas chaves padrões
+      let adviceText = response.data.conselho || response.data.advice;
+
+      // Se não achou, pega o PRIMEIRO valor que vier no JSON (garante que funciona independente da chave)
+      if (!adviceText) {
+        const values = Object.values(response.data);
+        if (values.length > 0) {
+            adviceText = values[0];
+        }
+      }
+
       setAdvice(adviceText);
+
     } catch (error) {
       console.log(error);
-      // Se der erro 503 (cota excedida) ou outro, mostra o alerta
       const msg = error.response?.data?.message || 'O Coach IA está indisponível no momento.';
       Alert.alert('Ops!', msg);
     } finally {
@@ -55,7 +71,8 @@ export default function AiCoachScreen() {
         </TouchableOpacity>
       </View>
 
-      {advice !== '' && (
+      {/* Só renderiza se advice tiver valor real (não null/undefined/vazio) */}
+      {advice ? (
         <View style={styles.resultCard}>
           <View style={styles.resultHeader}>
             <Feather name="check-circle" size={24} color="#2E7D32" />
@@ -63,7 +80,8 @@ export default function AiCoachScreen() {
           </View>
           <Text style={styles.adviceText}>{advice}</Text>
         </View>
-      )}
+      ) : null}
+      
     </ScrollView>
   );
 }
@@ -71,15 +89,24 @@ export default function AiCoachScreen() {
 const styles = StyleSheet.create({
   container: { padding: 20, backgroundColor: '#F0F4F8', flexGrow: 1 },
   header: { alignItems: 'center', marginBottom: 30, marginTop: 10 },
-  title: { fontSize: 24, fontWeight: 'bold', color: '#1B5E20', marginTop: 10, textAlign: 'center' },
-  subtitle: { fontSize: 14, color: '#546E7A', textAlign: 'center', marginTop: 5, paddingHorizontal: 10 },
+  title: { fontSize: 26, fontWeight: 'bold', color: '#1B5E20', marginTop: 10, textAlign: 'center' },
+  subtitle: { fontSize: 16, color: '#546E7A', textAlign: 'center', marginTop: 5, paddingHorizontal: 10 },
   card: { backgroundColor: '#FFF', padding: 20, borderRadius: 12, elevation: 3, marginBottom: 20 },
   cardTitle: { fontSize: 18, fontWeight: 'bold', color: '#37474F', marginBottom: 10 },
   cardText: { fontSize: 14, color: '#607D8B', lineHeight: 20, marginBottom: 20 },
   button: { backgroundColor: '#2E7D32', padding: 16, borderRadius: 8, alignItems: 'center' },
   btnContent: { flexDirection: 'row', alignItems: 'center' },
   buttonText: { color: '#FFF', fontWeight: 'bold', fontSize: 16 },
-  resultCard: { backgroundColor: '#E8F5E9', padding: 20, borderRadius: 12, elevation: 2, borderWidth: 1, borderColor: '#C8E6C9' },
+  
+  resultCard: { 
+    backgroundColor: '#E8F5E9', 
+    padding: 20, 
+    borderRadius: 12, 
+    elevation: 2, 
+    borderWidth: 1, 
+    borderColor: '#C8E6C9',
+    marginBottom: 30 // Margem extra no final
+  },
   resultHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 15 },
   resultTitle: { fontSize: 18, fontWeight: 'bold', color: '#1B5E20', marginLeft: 10 },
   adviceText: { fontSize: 15, color: '#263238', lineHeight: 24, textAlign: 'justify' }
