@@ -1,8 +1,8 @@
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { AuthProvider } from './src/contexts/AuthContext';
-import Routes from './src/routes';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import React from "react";
+import { StatusBar } from "expo-status-bar";
+import { AuthProvider } from "./src/contexts/AuthContext";
+import Routes from "./src/routes";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function App() {
   return (

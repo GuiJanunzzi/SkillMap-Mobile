@@ -6,7 +6,9 @@ try {
   // Tenta pegar o hash curto do último commit
   commitHash = execSync("git rev-parse --short HEAD").toString().trim();
 } catch (e) {
-  console.warn('Não foi possível pegar o hash do commit (Git não iniciado?), usando "Dev"');
+  console.warn(
+    'Não foi possível pegar o hash do commit (Git não iniciado?), usando "Dev"'
+  );
   commitHash = "Dev";
 }
 
@@ -23,28 +25,28 @@ module.exports = {
     splash: {
       image: "./assets/skillmap-logo.png",
       resizeMode: "contain",
-      backgroundColor: "#ffffff"
+      backgroundColor: "#ffffff",
     },
     ios: {
-      supportsTablet: true
+      supportsTablet: true,
     },
     android: {
       adaptiveIcon: {
         foregroundImage: "./assets/skillmap-logo.png",
-        backgroundColor: "#ffffff"
+        backgroundColor: "#ffffff",
       },
-      package: "com.fiap.skillmap" // Nome do pacote Android
+      package: "com.fiap.skillmap", // Nome do pacote Android
     },
     web: {
-      favicon: "./assets/skillmap-logo.png"
+      favicon: "./assets/skillmap-logo.png",
     },
-    
+
     extra: {
       appVersion: appVersion,
       commitHash: commitHash,
       eas: {
-        projectId: "a8424ea3-d420-40ea-917c-6f533b4c0048"
-      }
-    }
-  }
+        projectId: "a8424ea3-d420-40ea-917c-6f533b4c0048",
+      },
+    },
+  },
 };

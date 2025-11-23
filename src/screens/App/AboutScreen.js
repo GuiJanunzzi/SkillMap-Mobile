@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  ScrollView,
-} from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import Constants from "expo-constants";
 import { Feather } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -14,7 +8,7 @@ export default function AboutScreen() {
   // Lista de Desenvolvedores
   const developers = [
     { name: "Guilherme Janunzi", rm: "558461", githubUser: "GuiJanunzzi" },
-    { name: "Caike Dametto", rm: "558614", githubUser: "Dametto98" }
+    { name: "Caike Dametto", rm: "558614", githubUser: "Dametto98" },
   ];
 
   // Pega dados do app.json
@@ -28,8 +22,8 @@ export default function AboutScreen() {
         {/* Logo e Título */}
         <View style={styles.header}>
           <Image
-          source={require("../../../assets/skillmap-logo.png")}
-          style={styles.logo}
+            source={require("../../../assets/skillmap-logo.png")}
+            style={styles.logo}
           />
           <Text style={styles.subtitle}>O Futuro do Trabalho</Text>
         </View>
@@ -104,8 +98,8 @@ const styles = StyleSheet.create({
     borderColor: "#DDD",
     borderWidth: 1,
     marginBottom: 10,
-    elevation: 2, 
-    shadowColor: "#000", 
+    elevation: 2,
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -126,7 +120,7 @@ const styles = StyleSheet.create({
   infoValue: {
     fontSize: 14,
     color: "#333",
-    fontFamily: "monospace", 
+    fontFamily: "monospace",
   },
   developersTitle: {
     fontSize: 22,
@@ -170,7 +164,7 @@ const styles = StyleSheet.create({
   },
   devGithub: {
     fontSize: 14,
-    color: "#2E7D32", 
+    color: "#2E7D32",
     fontWeight: "bold",
     marginTop: 2,
   },
