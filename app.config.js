@@ -14,8 +14,8 @@ const appVersion = myPackage.version; // Pega a versão do package.json (ex: 1.0
 
 module.exports = {
   expo: {
-    name: "skillmap-mobile",
-    slug: "skillmap-mobile",
+    name: "SkillMap",
+    slug: "SkillMap",
     version: appVersion,
     orientation: "portrait",
     icon: "./assets/skillmap-logo.png",
@@ -42,6 +42,9 @@ module.exports = {
     extra: {
       appVersion: appVersion,
       commitHash: commitHash,
+      eas: {
+        projectId: "a2d196b8-81b2-4f43-99ef-d22f5a718929"
+      }
     }
   }
 };
