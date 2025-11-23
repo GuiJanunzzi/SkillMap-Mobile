@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', padding: 20, backgroundColor: '#F5F5F5' },
   title: { fontSize: 32, fontWeight: 'bold', color: '#2E7D32', textAlign: 'center', marginBottom: 10 },
   subtitle: { fontSize: 16, color: '#666', textAlign: 'center', marginBottom: 30 },
-  input: { backgroundColor: '#FFF', borderWidth: 1, borderColor: '#DDD', borderRadius: 8, padding: 15, marginBottom: 15, fontSize: 16 },
+  input: { backgroundColor: '#FFF', borderWidth: 1, borderColor: '#DDD', borderRadius: 8, padding: 15, marginBottom: 15, fontSize: 16, color: '#666'},
   button: { backgroundColor: '#2E7D32', padding: 15, borderRadius: 8, alignItems: 'center' },
   buttonText: { color: '#FFF', fontWeight: 'bold', fontSize: 16 },
   registerButton: { marginTop: 20, alignItems: 'center' },
