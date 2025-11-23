@@ -130,9 +130,9 @@ export default function GoalFormScreen({ route, navigation }) {
       ) : (
         <View style={styles.formArea}>
           <Text style={styles.label}>Nome da Meta *</Text>
-          <TextInput style={styles.input} value={nome} onChangeText={setNome} placeholder="Ex: Energia Eólica" />
+          <TextInput style={styles.input} value={nome} onChangeText={setNome} placeholder="Ex: Energia Eólica" placeholderTextColor="#666" />
           <Text style={styles.label}>Descrição</Text>
-          <TextInput style={styles.input} value={descricao} onChangeText={setDescricao} placeholder="Descrição breve" />
+          <TextInput style={styles.input} value={descricao} onChangeText={setDescricao} placeholder="Descrição breve" placeholderTextColor="#666" />
           <Text style={styles.label}>Categoria *</Text>
           <TouchableOpacity style={styles.selectButton} onPress={() => setCategoryModalVisible(true)}>
             <Text style={styles.selectButtonText}>{selectedCategory ? selectedCategory.nome : 'Selecione...'}</Text>

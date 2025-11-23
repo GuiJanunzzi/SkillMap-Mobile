@@ -213,10 +213,10 @@ export default function SkillFormScreen({ route, navigation }) {
         /* --- FORMULÁRIO: CRIAR / EDITAR --- */
         <View style={styles.formArea}>
           <Text style={styles.label}>Nome da Habilidade *</Text>
-          <TextInput style={styles.input} value={nome} onChangeText={setNome} placeholder="Ex: React Native" />
+          <TextInput style={styles.input} value={nome} onChangeText={setNome} placeholder="Ex: React Native" placeholderTextColor="#666"/>
 
           <Text style={styles.label}>Descrição</Text>
-          <TextInput style={styles.input} value={descricao} onChangeText={setDescricao} placeholder="Ex: Framework Mobile" />
+          <TextInput style={styles.input} value={descricao} onChangeText={setDescricao} placeholder="Ex: Framework Mobile" placeholderTextColor="#666"/>
 
           <Text style={styles.label}>Categoria *</Text>
           {/* Botão que abre o Modal de Categorias */}
