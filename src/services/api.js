@@ -6,8 +6,7 @@ import axios from 'axios';
 // iPhone Físico ou Emulador iOS: Use o IP da sua máquina na rede (ex: 'http://192.168.1.15:8080')
 
 const api = axios.create({
-  baseURL: 'https://skillmap-api.azurewebsites.net', 
-  timeout: 10000, 
+  baseURL: 'https://skillmap-javabackend.onrender.com', 
 });
 
 export default api;
