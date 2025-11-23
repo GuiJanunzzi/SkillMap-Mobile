@@ -21,7 +21,15 @@ export default function LoginScreen({ navigation }) {
     try {
       await signIn(email, password);
     } catch (error) {
-      Alert.alert('Erro no Login', error.message);
+      // Tenta pegar a mensagem amigável que vem do JSON do backend
+      let mensagemErro = error.response?.data?.message;
+
+      // Se não tiver resposta do servidor (ex: servidor offline), usa uma mensagem padrão
+      if (!mensagemErro) {
+          mensagemErro = "Não foi possível conectar. Verifique sua internet ou tente mais tarde.";
+      }
+      
+      Alert.alert('Erro no Login', mensagemErro);
     } finally {
       setLoading(false);
     }

@@ -18,7 +18,6 @@ export default function RegisterScreen({ navigation }) {
 
     setLoading(true);
     try {
-      // Chama o endpoint público do seu Java
       await api.post('/auth/register', {
         nome: name,
         email: email,
@@ -30,7 +29,25 @@ export default function RegisterScreen({ navigation }) {
       ]);
     } catch (error) {
       console.log(error);
-      Alert.alert('Erro', 'Não foi possível criar a conta.');
+      
+      let mensagemErro = error.response?.data?.message;
+
+      // Se não achar mensagem no JSON, tenta pegar o erro genérico
+      if (!mensagemErro && error.response?.status === 400) {
+          mensagemErro = "Dados inválidos. Verifique os campos.";
+      }
+
+      // Fallback final
+      if (!mensagemErro) {
+          mensagemErro = "Não foi possível criar a conta. Tente novamente.";
+      } else {
+          // Substitui o "; " por uma quebra de linha visual (\n)
+          // E remove o nome técnico do campo
+          mensagemErro = mensagemErro.replace(/; /g, '\n');
+      }
+
+      Alert.alert('Erro de preenchimento', mensagemErro);
+
     } finally {
       setLoading(false);
     }
