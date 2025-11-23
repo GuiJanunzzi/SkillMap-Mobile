@@ -43,7 +43,7 @@ module.exports = {
       appVersion: appVersion,
       commitHash: commitHash,
       eas: {
-        projectId: "cc3f6e8d-3852-4569-89f0-2caba5bcb095"
+        projectId: "a8424ea3-d420-40ea-917c-6f533b4c0048"
       }
     }
   }
